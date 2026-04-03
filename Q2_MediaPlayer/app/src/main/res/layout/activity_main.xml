@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"/>
 
-    <!-- CENTERED BUTTONS -->
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center"
@@ -46,7 +45,6 @@
         android:layout_height="220dp"
         android:layout_marginTop="15dp"/>
 
-    <!-- CONTROL BUTTONS -->
     <LinearLayout
         android:orientation="horizontal"
         android:gravity="center"
@@ -54,29 +52,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/play"
-            android:text="Play"
-            android:backgroundTint="#90EE90"
-            android:layout_margin="5dp"/>
-
-        <Button
-            android:id="@+id/pause"
-            android:text="Pause"
-            android:backgroundTint="#90EE90"
-            android:layout_margin="5dp"/>
-
-        <Button
-            android:id="@+id/stop"
-            android:text="Stop"
-            android:backgroundTint="#90EE90"
-            android:layout_margin="5dp"/>
-
-        <Button
-            android:id="@+id/restart"
-            android:text="Restart"
-            android:backgroundTint="#90EE90"
-            android:layout_margin="5dp"/>
+        <Button android:id="@+id/play" android:text="Play"/>
+        <Button android:id="@+id/pause" android:text="Pause"/>
+        <Button android:id="@+id/stop" android:text="Stop"/>
+        <Button android:id="@+id/restart" android:text="Restart"/>
 
     </LinearLayout>
 
