@@ -2,13 +2,13 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/amount"
-        android:hint="Enter Amount"
+        android:hint="Enter amount"
         android:inputType="numberDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -31,8 +31,9 @@
 
     <TextView
         android:id="@+id/result"
-        android:textSize="20sp"
         android:text="Result"
+        android:textSize="22sp"
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
