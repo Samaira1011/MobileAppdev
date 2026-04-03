@@ -3,7 +3,6 @@ package com.example.currencyconverter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
         from.setAdapter(adapter);
         to.setAdapter(adapter);
 
-        convert.setOnClickListener(v -> convertCurrency());
+        convert.setOnClickListener(v -> convert());
     }
 
-    private void convertCurrency() {
+    private void convert(){
 
         double amt = Double.parseDouble(amount.getText().toString());
 
@@ -46,45 +45,24 @@ public class MainActivity extends AppCompatActivity {
 
         double inr = 0;
 
-        // convert to INR first
-        switch (fromCur) {
+        switch (fromCur){
 
-            case "USD":
-                inr = amt * 83;
-                break;
-
-            case "EUR":
-                inr = amt * 90;
-                break;
-
-            case "JPY":
-                inr = amt * 0.55;
-                break;
-
-            default:
-                inr = amt;
+            case "USD": inr = amt * 83; break;
+            case "EUR": inr = amt * 90; break;
+            case "JPY": inr = amt * 0.55; break;
+            default: inr = amt;
         }
 
-        double finalAmount = 0;
+        double resultValue = 0;
 
-        switch (toCur) {
+        switch (toCur){
 
-            case "USD":
-                finalAmount = inr / 83;
-                break;
-
-            case "EUR":
-                finalAmount = inr / 90;
-                break;
-
-            case "JPY":
-                finalAmount = inr / 0.55;
-                break;
-
-            default:
-                finalAmount = inr;
+            case "USD": resultValue = inr / 83; break;
+            case "EUR": resultValue = inr / 90; break;
+            case "JPY": resultValue = inr / 0.55; break;
+            default: resultValue = inr;
         }
 
-        result.setText("Result: " + finalAmount + " " + toCur);
+        result.setText("Result: " + resultValue + " " + toCur);
     }
 }
