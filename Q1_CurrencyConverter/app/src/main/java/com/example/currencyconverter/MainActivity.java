@@ -2,6 +2,7 @@ package com.example.currencyconverter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.*;
 
@@ -16,6 +17,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button settings;
+        settings = findViewById(R.id.settingsBtn);
+
+        settings.setOnClickListener(v ->
+                startActivity(new Intent(
+                        MainActivity.this,
+                        SettingsActivity.class)));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -34,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         to.setAdapter(adapter);
 
         convert.setOnClickListener(v -> convert());
+
     }
 
     private void convert(){
