@@ -17,13 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button settings;
-        settings = findViewById(R.id.settingsBtn);
-
-        settings.setOnClickListener(v ->
-                startActivity(new Intent(
-                        MainActivity.this,
-                        SettingsActivity.class)));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -32,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
         to = findViewById(R.id.toCurrency);
         convert = findViewById(R.id.convertBtn);
         result = findViewById(R.id.result);
+
+        Button settings = findViewById(R.id.settingsBtn);
+
+        settings.setOnClickListener(v ->
+                startActivity(new Intent(
+                        MainActivity.this,
+                        SettingsActivity.class)));
 
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(this,
@@ -42,11 +42,13 @@ public class MainActivity extends AppCompatActivity {
         to.setAdapter(adapter);
 
         convert.setOnClickListener(v -> convert());
-
     }
 
     private void convert(){
-
+        if(amount.getText().toString().isEmpty()){
+            result.setText("Enter amount first");
+            return;
+        }
         double amt = Double.parseDouble(amount.getText().toString());
 
         String fromCur = from.getSelectedItem().toString();
@@ -72,6 +74,6 @@ public class MainActivity extends AppCompatActivity {
             default: resultValue = inr;
         }
 
-        result.setText("Result: " + resultValue + " " + toCur);
+        result.setText("Result: " + String.format("%.2f", resultValue) + " " + toCur);
     }
 }
