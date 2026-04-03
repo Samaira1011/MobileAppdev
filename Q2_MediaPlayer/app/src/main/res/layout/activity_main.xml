@@ -1,19 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/urlInput"
+        android:hint="Enter Video URL"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="15dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- CENTERED BUTTONS -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/openFile"
+            android:text="Open Audio File"
+            android:backgroundTint="#90EE90"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"/>
+
+        <Button
+            android:id="@+id/openUrl"
+            android:text="Load Video URL"
+            android:backgroundTint="#90EE90"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"/>
+
+    </LinearLayout>
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginTop="15dp"/>
+
+    <!-- CONTROL BUTTONS -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/play"
+            android:text="Play"
+            android:backgroundTint="#90EE90"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/pause"
+            android:text="Pause"
+            android:backgroundTint="#90EE90"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/stop"
+            android:text="Stop"
+            android:backgroundTint="#90EE90"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/restart"
+            android:text="Restart"
+            android:backgroundTint="#90EE90"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
