@@ -1,12 +1,13 @@
 package com.example.mediaplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.widget.MediaController;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,9 +40,24 @@ public class MainActivity extends AppCompatActivity {
         // Load Video from URL
         openUrl.setOnClickListener(v -> {
             String url = urlInput.getText().toString();
-            videoView.setVideoURI(Uri.parse(url));
-            videoView.requestFocus();
-            Toast.makeText(this, "Video Loaded", Toast.LENGTH_SHORT).show();
+
+            if (url.isEmpty()) {
+                Toast.makeText(this, "Enter URL first", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Uri videoUri = Uri.parse(url);
+            videoView.setVideoURI(videoUri);
+
+            // Add controller (IMPORTANT)
+            MediaController mediaController = new MediaController(this);
+            mediaController.setAnchorView(videoView);
+            videoView.setMediaController(mediaController);
+
+            // Play when ready
+            videoView.setOnPreparedListener(mp -> {
+                videoView.start();
+            });
         });
 
         // Controls

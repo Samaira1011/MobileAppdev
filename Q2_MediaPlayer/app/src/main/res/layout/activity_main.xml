@@ -52,10 +52,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button android:id="@+id/play" android:text="Play"/>
-        <Button android:id="@+id/pause" android:text="Pause"/>
-        <Button android:id="@+id/stop" android:text="Stop"/>
-        <Button android:id="@+id/restart" android:text="Restart"/>
+        <Button
+            android:id="@+id/play"
+            android:text="Play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/pause"
+            android:text="Pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/stop"
+            android:text="Stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/restart"
+            android:text="Restart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"/>
 
     </LinearLayout>
 
