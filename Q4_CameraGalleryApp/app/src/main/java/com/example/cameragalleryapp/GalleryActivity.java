@@ -29,7 +29,7 @@ public class GalleryActivity extends AppCompatActivity {
             }
         }
 
-        com.example.cameragalleryapp.ImageAdapter adapter = new com.example.cameragalleryapp.ImageAdapter(this, imagePaths);
+        ImageAdapter adapter = new ImageAdapter(this, imagePaths);
         grid.setAdapter(adapter);
 
         grid.setOnItemClickListener((parent, view, position, id) -> {

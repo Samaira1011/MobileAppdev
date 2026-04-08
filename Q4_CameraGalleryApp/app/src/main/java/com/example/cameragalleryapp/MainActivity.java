@@ -2,7 +2,6 @@ package com.example.cameragalleryapp;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -21,12 +20,11 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE = 1;
-    String currentPhotoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.example.cameragalleryapp.R.layout.activity_main);
 
         Button capture = findViewById(R.id.btnCapture);
         Button gallery = findViewById(R.id.btnGallery);
@@ -43,21 +41,18 @@ public class MainActivity extends AppCompatActivity {
     private void openCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            File photoFile = null;
-
-            try {
-                photoFile = createImageFile();
-            } catch (IOException e) { }
-
-            if (photoFile != null) {
-                Uri uri = FileProvider.getUriForFile(this,
-                        getPackageName() + ".provider", photoFile);
-
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                startActivityForResult(intent, REQUEST_IMAGE);
-            }
+        File photoFile;
+        try {
+            photoFile = createImageFile();
+        } catch (IOException e) {
+            return;
         }
+
+        Uri uri = FileProvider.getUriForFile(this,
+                getPackageName() + ".provider", photoFile);
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        startActivityForResult(intent, REQUEST_IMAGE);
     }
 
     private File createImageFile() throws IOException {
@@ -66,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
         File storageDir = new File(Environment.getExternalStorageDirectory(), "MyPhotos");
         if (!storageDir.exists()) storageDir.mkdirs();
 
-        File image = File.createTempFile("IMG_" + timeStamp, ".jpg", storageDir);
-        currentPhotoPath = image.getAbsolutePath();
-        return image;
+        return File.createTempFile("IMG_" + timeStamp, ".jpg", storageDir);
     }
 }
